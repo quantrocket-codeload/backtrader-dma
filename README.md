@@ -1,4 +1,4 @@
-# codeload-backtrader-dma
+# backtrader-dma
 
 A dual moving average crossover strategy for backtrader.
 
