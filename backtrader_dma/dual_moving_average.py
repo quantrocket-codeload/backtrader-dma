@@ -40,12 +40,12 @@ if __name__ == '__main__':
     # (Put files in /tmp to have QuantRocket automatically clean them out after
     # a few hours)
     download_history_file(
-        'aapl-1d',
-        filepath_or_buffer='/tmp/aapl-1d.csv',
+        'backtrader-demo-1d',
+        filepath_or_buffer='/tmp/backtrader-demo-1d.csv',
         fields=['ConId','Date','Open','Close','High','Low','Volume'])
 
     data = btfeeds.GenericCSVData(
-        dataname='/tmp/aapl-1d.csv',
+        dataname='/tmp/backtrader-demo-1d.csv',
         dtformat=('%Y-%m-%d'),
         datetime=1,
         open=2,
