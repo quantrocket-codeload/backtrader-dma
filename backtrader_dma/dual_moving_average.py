@@ -1,4 +1,4 @@
-# Copyright 2018 QuantRocket LLC - All Rights Reserved
+# Copyright 2020 QuantRocket LLC - All Rights Reserved
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ class DualMovingAverageStrategy(bt.SignalStrategy):
         # Go long when short moving average is above long moving average
         self.signal_add(bt.SIGNAL_LONG, bt.ind.CrossOver(smavg, lmavg))
 
-if __name__ == '__main__':
+def run():
 
     cerebro = bt.Cerebro()
 
@@ -40,9 +40,10 @@ if __name__ == '__main__':
     # (Put files in /tmp to have QuantRocket automatically clean them out after
     # a few hours)
     download_history_file(
-        'backtrader-demo-1d',
+        'usstock-free-1d',
+        sids=['FIBBG000B9XRY4'],
         filepath_or_buffer='/tmp/backtrader-demo-1d.csv',
-        fields=['ConId','Date','Open','Close','High','Low','Volume'])
+        fields=['Sid','Date','Open','Close','High','Low','Volume'])
 
     data = btfeeds.GenericCSVData(
         dataname='/tmp/backtrader-demo-1d.csv',
@@ -59,6 +60,5 @@ if __name__ == '__main__':
     cerebro.addstrategy(DualMovingAverageStrategy)
     cerebro.run()
 
-    # Save the plot to PDF so the satellite service can return it (make sure
-    # to use the Agg backend)
-    cerebro.plot(use='Agg', savefig=True, figfilename='/tmp/backtrader-plot.pdf')
+    # Save the plot to PDF so the satellite service can return it
+    cerebro.plot(savefig=True, figfilename='/tmp/backtrader-plot.pdf')
