@@ -1,1 +1,2 @@
 https://codeload.github.com/quantrocket-llc/backtrader/zip/master
+matplotlib<=3.2.2
